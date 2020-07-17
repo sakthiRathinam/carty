@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+	{{object.title}}
+	{{object.description}}
+	{{object.price}}
+	<div class="row">
+		<div class='col-5'>
+			{% include 'carts/add.html' with product=object cart=cart %}
+		</div>
+	</div>
+{% endblock content %}
+

@@ -1,0 +1,80 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "lkasefn",
+        "slug": "lk",
+        "description": "ewlkfnnfqe",
+        "price": "23.33",
+        "image": "products/lkasefn/lkasefn.JPG",
+        "active": false,
+        "featured": false
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "aelfnh",
+        "slug": "abc",
+        "description": "welfkneqwnklg",
+        "price": "22.33",
+        "image": "products/aelfnh/aelfnh.JPG",
+        "active": true,
+        "featured": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "tort",
+        "slug": "aaa",
+        "description": "ekjgbb",
+        "price": "14.00",
+        "image": "products/tort/tort.png",
+        "active": true,
+        "featured": false
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "tort",
+        "slug": "tort",
+        "description": "efl",
+        "price": "223.00",
+        "image": "products/tort/tort.JPG",
+        "active": true,
+        "featured": false
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "sdlr",
+        "slug": "sdlr",
+        "description": "sgrknlwnk;r",
+        "price": "213.00",
+        "image": "products/sdlr/sdlr.png",
+        "active": true,
+        "featured": false
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "sdlr",
+        "slug": "sdlr-2j6p",
+        "description": "rlwkjgbjwlegb",
+        "price": "1233.00",
+        "image": "",
+        "active": true,
+        "featured": false
+    }
+}
+]

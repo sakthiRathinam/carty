@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<div class="row">
+	{% for object in object_list %}
+		<div class="col-lg-4 col-md-8 col-sm-12">
+			<div class="box-element product">
+				<img class="thumbnail" src="{{object.imageUrl}}">
+				<h6><strong>{{object.title}}</strong></h6>
+				<hr>
+				<form method='POST' action='{% url "cart:update" %}' class="form"> {% csrf_token %}
+				    <input type='hidden' name='product_id' value='{{ object.id }}' />
+				    {% if object in cart.products.all %}
+				    	<button type="submit" class="btn btn-outline-secondary  add-btn update-cart">remove item</button>
+				    	<a class="btn btn-outline-success" href="{{object.get_absolute_url}}">View</a>
+				    {% else %}
+				        <button type="submit" class="btn btn-outline-secondary  add-btn update-cart">Add to Cart</button>
+				        <a class="btn btn-outline-success" href="{{object.get_absolute_url}}">View</a>
+				    {% endif %}
+				</form>
+				
+				<h4 style="display:inline-block; float:right"><strong>{{object.price}}</strong></h4>
+			</div> 
+		</div>
+	{% endfor %}
+</div>
+{% endblock content %}
+
+
