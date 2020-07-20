@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 t1=os.path.join(BASE_DIR,'templates')
@@ -26,7 +26,7 @@ SECRET_KEY = 'uklao$hjp0ke9%cdv_cij-r10e5mb0nv+0me2uwl%+ma@d6s5v'
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','sakthicarty.herokuapp.com']
 
 
 # Application definitions
@@ -61,6 +61,7 @@ STRIPE_SECRET_KEY ="sk_test_eFJDXUWedmd8J2GuJfkegNfG00YvUZ6p6v"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
