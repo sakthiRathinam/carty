@@ -25,10 +25,10 @@ SECRET_KEY = 'uklao$hjp0ke9%cdv_cij-r10e5mb0nv+0me2uwl%+ma@d6s5v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 
-# Application definition
+# Application definitions
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'products',
     'search',
     'tag',
@@ -141,3 +142,19 @@ STATICFILES_DIRS=[
 STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","static_root")
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","media_root")
+from ecommerce.aws.utils import *
+
+CORS_REPLACE_HTTPS_REFERER      = False
+HOST_SCHEME                     = "http://"
+SECURE_PROXY_SSL_HEADER         = None
+SECURE_SSL_REDIRECT             = False
+SESSION_COOKIE_SECURE           = False
+CSRF_COOKIE_SECURE              = False
+SECURE_HSTS_SECONDS             = None
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
+SECURE_FRAME_DENY               = False
+
+AWS_ACCESS_KEY_ID ="AKIAXQT5S4WCLFW245W6"
+AWS_SECRET_ACCESS_KEY ="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"
+AWS_GROUP_NAME = "sakthigroup"
+AWS_USERNAME = "sakthicart"

@@ -23,12 +23,15 @@ from addresses.views import *
 from cart.views import cart_api_view
 from accounts.views import *
 from billing.views import *
+from products.views import *
 app_name='products'
 app_name1='search'
 app_name2='cart'
 app_name3='orders'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',ProductListView.as_view(),name="list"),
     path('api/cart/', cart_api_view, name='api-cart'),
     path('guestProfile/',guestView,name="guest"),
     path('billing/payment-method/create/', payment_method_createview, name='billing-payment-method-endpoint'),
