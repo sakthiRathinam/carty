@@ -23,7 +23,7 @@ t1=os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'uklao$hjp0ke9%cdv_cij-r10e5mb0nv+0me2uwl%+ma@d6s5v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['127.0.0.1','sakthicarty.herokuapp.com']
@@ -61,7 +61,6 @@ STRIPE_SECRET_KEY ="sk_test_eFJDXUWedmd8J2GuJfkegNfG00YvUZ6p6v"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -147,11 +146,12 @@ STATICFILES_DIRS=[
 STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","static_root")
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","media_root")
+
 from ecommerce.aws.utils import *
 
 # Let's Encrypt ssl/tls https
 
-CORS_REPLACE_HTTPS_REFERER      = True
+"""CORS_REPLACE_HTTPS_REFERER      = True
 HOST_SCHEME                     = "https://"
 SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT             = True
@@ -159,7 +159,7 @@ SESSION_COOKIE_SECURE           = True
 CSRF_COOKIE_SECURE              = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
 SECURE_HSTS_SECONDS             = 1000000
-SECURE_FRAME_DENY               = True
+SECURE_FRAME_DENY               = True"""
 
 
 

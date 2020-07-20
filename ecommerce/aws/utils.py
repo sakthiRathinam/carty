@@ -8,7 +8,6 @@ AWS_SECRET_ACCESS_KEY = "chEpoJHIVVUtI9bOcJgbUchR8FsWda+yMSlU5ZzQ"
 AWS_FILE_EXPIRE = 200
 AWS_PRELOAD_METADATA = True
 AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'ecommerce.aws.conf.MediaRootS3BotoStorage'
 STATICFILES_STORAGE = 'ecommerce.aws.conf.StaticRootS3BotoStorage'
