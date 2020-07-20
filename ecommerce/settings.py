@@ -23,7 +23,7 @@ t1=os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'uklao$hjp0ke9%cdv_cij-r10e5mb0nv+0me2uwl%+ma@d6s5v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
 
@@ -147,15 +147,19 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","media_root")
 from ecommerce.aws.utils import *
 
-CORS_REPLACE_HTTPS_REFERER      = False
-HOST_SCHEME                     = "http://"
-SECURE_PROXY_SSL_HEADER         = None
-SECURE_SSL_REDIRECT             = False
-SESSION_COOKIE_SECURE           = False
-CSRF_COOKIE_SECURE              = False
-SECURE_HSTS_SECONDS             = None
-SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
-SECURE_FRAME_DENY               = False
+# Let's Encrypt ssl/tls https
+
+CORS_REPLACE_HTTPS_REFERER      = True
+HOST_SCHEME                     = "https://"
+SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT             = True
+SESSION_COOKIE_SECURE           = True
+CSRF_COOKIE_SECURE              = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
+SECURE_HSTS_SECONDS             = 1000000
+SECURE_FRAME_DENY               = True
+
+
 
 AWS_ACCESS_KEY_ID ="AKIAXQT5S4WCLFW245W6"
 AWS_SECRET_ACCESS_KEY ="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"
