@@ -1,5 +1,18 @@
-from django.shortcuts import render,redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
+from django.views.generic import ListView, DetailView
+from django.shortcuts import render
 
-# Create your views here.
-def home(request):
-	return redirect('login')
+from billing.models import BillingProfile
+from .models import Order
+
+class OrderListView(LoginRequiredMixin,ListView):
+	def get_queryset(self):
+		return Order.objects.by_request(self.request).not_created()
+
+class OrderDetailView(LoginRequiredMixin,DetailView):
+	template_name="orders/order_detail.html"
+	def get_object(self):
+		qs=Order.objects.all().get(order_id=self.kwargs.get('order_id'))
+		return qs
+	

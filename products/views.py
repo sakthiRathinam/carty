@@ -5,6 +5,7 @@ from django.views.generic import ListView,DetailView
 from django.http import Http404
 from cart.models import *
 from analytics.mixins import * 
+from analytics.models import *
 class ProductFeaturedListView(ListView):
 	template_name="products/list.html"
 
@@ -36,6 +37,21 @@ class ProductSlugDetailView(ObjectViewedMixin,DetailView):
 		except:
 			raise Http404('uhmmm')
 		return instance
+class UserProductHistoryView(ListView):
+	template_name="products/Historylist.html"
+
+	def get_context_data(self,*args,**kwargs):
+		context=super(UserProductHistoryView,self).get_context_data(*args,**kwargs)
+		print(self.request)
+		cart_obj,new_obj=Cart.objects.new_or_get(self.request)
+		context['cart'] = cart_obj
+		return context
+	def get_queryset(self,*args,**kwargs):
+		request = self.request
+		views = request.user.objectviewed_set.by_model(Product,model_queryset=False)
+		return views
+
+
 #class based view
 class ProductListView(ListView):
 	queryset=Product.objects.all()

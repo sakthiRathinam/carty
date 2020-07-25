@@ -64,7 +64,7 @@ def loginPage(request):
 User = get_user_model()
 def logoutUser(request):
 	logout(request)
-	return redirect('login')
+	return redirect('products:list')
 def guestView(request):
 	if request.method =='POST':
 		next_=request.POST.get('next')

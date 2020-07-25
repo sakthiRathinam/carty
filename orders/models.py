@@ -6,9 +6,20 @@ from cart.models import *
 from ecommerce.utils import *
 from billing.models import *
 from addresses.models import *
+from django.urls import reverse
 OrderChoices=(('created','Created'),('paid','Paid'),('shipped','Shipped'),('refunded','Refunded'),)
+class OrderManagerQuerySet(models.query.QuerySet):
+	def by_request(self,request):
+		billing_profile,created = BillingProfile.objects.new_or_get(request)
+		return self.filter(billing_profile=billing_profile)
+	def not_created(self):
+		return self.exclude(status='created')
 
 class OrderManager(models.Manager):
+	def get_queryset(self):
+		return OrderManagerQuerySet(self.model,using=self._db)
+	def by_request(self,request):
+		return self.get_queryset().by_request(request)
 	def new_or_get(self,billing_profile,cart_obj):
 		created=False
 		qs=self.get_queryset().filter(
@@ -35,10 +46,21 @@ class Order(models.Model):
 	shipping_total = models.DecimalField(max_digits=100,decimal_places=2,default=5.99)
 	total = models.DecimalField(max_digits=100,decimal_places=2,default=0.00)
 	active = models.BooleanField(default=True)
+	updated = models.DateTimeField(auto_now=True)
+	timestamp = models.DateTimeField(auto_now_add=True)
 	objects=OrderManager()
 	def __str__(self):
 		return self.order_id
-	
+	class Meta:
+		ordering = ['-timestamp','-updated']
+	def get_absolute_url(self):
+		return reverse("orders:detail",kwargs={'order_id':self.order_id})
+	def get_status(self):
+		if self.status == "refunded":
+			return "Refunded order"
+		elif self.status == "shipped":
+			return "Shipped"
+		return "Shipping Soon"
 	def update_total(self):
 		cart_total=self.cart.total
 		shipping_total=self.shipping_total

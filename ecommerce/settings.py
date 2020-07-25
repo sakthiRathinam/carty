@@ -58,6 +58,22 @@ FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION= False
 STRIPE_PUB_KEY = "pk_test_b1TuhW27sl97xwjpUxro1Ceo00BxZwLYUD"
 STRIPE_SECRET_KEY ="sk_test_eFJDXUWedmd8J2GuJfkegNfG00YvUZ6p6v"
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
+LOGOUT_URL = '/logout/'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sakthidhanush182@gmail.com' 
+EMAIL_HOST_PASSWORD = 'dhanush444'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'sakthicarty <sakthidhanush182@gmail.com>'
+BASE_URL = 'https://sakthicarty.herokuapp.com/'
+
+MANAGERS = (
+    ('sakthi ratnam', "sakthidhanush182@gmail.com"),
+)
+
+ADMINS = MANAGERS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

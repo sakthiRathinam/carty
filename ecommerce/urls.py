@@ -24,15 +24,19 @@ from cart.views import cart_api_view
 from accounts.views import *
 from billing.views import *
 from products.views import *
+from django.views.generic import TemplateView, RedirectView
 app_name='products'
 app_name1='search'
 app_name2='cart'
 app_name3='orders'
+app_name4='accounts'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',ProductListView.as_view(),name="list"),
     path('api/cart/', cart_api_view, name='api-cart'),
+    path('accounts/', include("accounts.passwords.urls")),
+    path('accounts/', RedirectView.as_view(url='/account')),
     path('guestProfile/',guestView,name="guest"),
     path('billing/payment-method/create/', payment_method_createview, name='billing-payment-method-endpoint'),
     path('paymentMethod/',payment_method,name="payment"),
@@ -41,8 +45,10 @@ urlpatterns = [
     path('products/',include(("products.urls",app_name),namespace='products')),
     path('products/search/',include(("search.urls",app_name1),namespace='search')),
     path('cart/',include(("cart.urls",app_name2),namespace='cart')),
+    path('account/',include(("accounts.urls",app_name4),namespace='account')),
     path('order/',include(("orders.urls",app_name3),namespace='order')),
     path('login/',loginPage,name="login"),
+    path('logout/',logoutUser,name="logout"),
     path('register/',register_page,name="register"),
     path('contact/',contactPage,name="contact"),
 ]
