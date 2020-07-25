@@ -38,7 +38,7 @@ class ProductSlugDetailView(ObjectViewedMixin,DetailView):
 			raise Http404('uhmmm')
 		return instance
 class UserProductHistoryView(ListView):
-	template_name="products/Historylist.html"
+	template_name="analytics/objectviewed_list.html"
 
 	def get_context_data(self,*args,**kwargs):
 		context=super(UserProductHistoryView,self).get_context_data(*args,**kwargs)
