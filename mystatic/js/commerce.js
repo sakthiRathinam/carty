@@ -93,6 +93,55 @@ function performSearch(){
   
 }*/
 var productForm=$(".form-product-ajax")
+function getOwnedProduct(productId, submitSpan){
+    var actionEndpoint = '/order/owner/'
+    var httpMethod = 'GET'
+    var data = {
+      product_id: productId
+    }
+
+    var isOwner;
+    $.ajax({
+        url: actionEndpoint,
+        method: httpMethod,
+        data: data,
+        success: function(data){
+          console.log(data)
+          console.log(data.owner)
+          if (data.owner){
+            isOwner = true
+            submitSpan.html("<a class='btn btn-warning' href='/order/library/'>In Library</a>")
+          } else {
+            isOwner = false
+          }
+        },
+        error: function(erorr){
+          console.log(error)
+
+        }
+    })
+    return isOwner
+    
+  }
+
+  $.each(productForm, function(index, object){
+    var $this = $(this)
+    var isUser = $this.attr("data-user")
+    var submitSpan = $this.find(".submit-span")
+    var productInput = $this.find("[name='product_id']")
+    var productId = productInput.attr("value")
+    var productIsDigital = productInput.attr("data-is-digital")
+    console.log(productIsDigital)
+    console.log("sakthigroup")
+    console.log(isUser)
+    if (productIsDigital && isUser){  
+      console.log("sakthiWin")
+      var isOwned = getOwnedProduct(productId, submitSpan)
+    }
+    console.log(isUser)
+  })  
+
+
 productForm.submit(function(event){
   event.preventDefault();
   console.log("Form is not sending")

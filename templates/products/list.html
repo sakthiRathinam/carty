@@ -9,8 +9,9 @@
 				<img class="thumbnail" src="{{object.imageUrl}}">
 				<h6><strong>{{object.title}}</strong></h6>
 				<hr>
-				<form class='form-product-ajax' method='POST' action='{% url "cart:update" %}' data-endpoint='{% url "cart:update" %}' class="form"> {% csrf_token %}
-				    <input type='hidden' name='product_id' value='{{ object.id }}' />
+				<form class='form-product-ajax' method='POST' action='{% url "cart:update" %}'
+				data-endpoint='{% url "cart:update" %}' class="form" {% if request.user.is_authenticated %}data-user='abc'{% endif %}/> {% csrf_token %}
+    				<input type='hidden' name='product_id' value='{{ object.id }}' {% if  object.is_digital %}data-is-digital='true'{% endif %}/>
 				    <span class='submit-span'>
 				    {% if object.content_object in cart.products.all %}
 				    	In cart<button type="submit" class="btn btn-dark  add-btn update-cart">remove</button>

@@ -10,6 +10,7 @@ urlpatterns = [
    path('products1/',productView),
    path('productss/',ProductFeaturedListView.as_view()),
    path('productss1/<slug:slug>/',ProductSlugDetailView.as_view(),name="detail"),
+   path('<slug:slug>/<int:pk>',ProductDownloadView.as_view(),name="download"),
 ]
 
 app_name='products'

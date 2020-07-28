@@ -162,6 +162,7 @@ STATICFILES_DIRS=[
 STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","static_root")
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","media_root")
+PROTECTED_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "protected_media")
 
 from ecommerce.aws.utils import *
 
@@ -183,3 +184,5 @@ AWS_ACCESS_KEY_ID ="AKIAXQT5S4WCLFW245W6"
 AWS_SECRET_ACCESS_KEY ="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"
 AWS_GROUP_NAME = "sakthigroup"
 AWS_USERNAME = "sakthicart"
+S3DIRECT_REGION = 'ap-south-1'
+AWS_STORAGE_BUCKET_NAME = 'sakthicarty'
