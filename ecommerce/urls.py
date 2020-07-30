@@ -24,6 +24,7 @@ from cart.views import cart_api_view
 from accounts.views import *
 from billing.views import *
 from products.views import *
+from analytics.views import *
 from django.views.generic import TemplateView, RedirectView
 app_name='products'
 app_name1='search'
@@ -34,6 +35,8 @@ app_name4='accounts'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',ProductListView.as_view(),name="list"),
+    path('sales/',SalesView.as_view(),name="sales"),
+    path('sales/data/',SalesAjaxView.as_view(),name="salesData"),
     path('api/cart/', cart_api_view, name='api-cart'),
     path('accounts/', include("accounts.passwords.urls")),
     path('accounts/', RedirectView.as_view(url='/account')),
