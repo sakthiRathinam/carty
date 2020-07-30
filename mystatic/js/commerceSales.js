@@ -27,7 +27,7 @@ $(document).ready(function(){
     }
 
     function getSalesData(id, type){
-        var url = '/analytics/sales/data/'
+        var url = '/sales/data/'
         var method = 'GET'
         var data = {"type": type}
         $.ajax({
